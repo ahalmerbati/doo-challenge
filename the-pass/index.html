@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>The Pass — Request Triage</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <div>
+          <h1>THE <span>PASS</span></h1>
+          <div class="sub">
+            Request triage — who gets handled first, and by whom
+          </div>
+        </div>
+        <div class="stat-strip">
+          <div class="stat"><b>2</b>staff on floor</div>
+          <div class="stat"><b>3</b>slots left today</div>
+          <div class="stat"><b>6</b>requests in</div>
+          <div class="stat"><b id="autoCount">–</b>auto-resolved</div>
+        </div>
+      </header>
+
+      <div class="panel">
+        <h2>Refund settings</h2>
+        <div class="control-row">
+          <label
+            >Auto-refund limit — AI can approve up to this amount on its own
+            <input type="number" id="threshold" value="50" min="0" step="5" />
+          </label>
+          <label
+            >Amount owed to this customer for the double charge
+            <input type="number" id="refundAmt" value="120" min="0" step="5" />
+          </label>
+          <div class="control-row" style="gap: 6px">
+            <span style="color: #c7cccb">→ Engine decision:</span>
+            <span class="readout" id="refundDecision">—</span>
+          </div>
+          <button class="runbtn" onclick="runTriage()">Re-run triage</button>
+        </div>
+        <div class="flag" id="thresholdFlag"></div>
+      </div>
+
+      <div class="rail-line"></div>
+      <div id="tickets"></div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="engine.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
